@@ -2,6 +2,7 @@ package com.facebook.campaigns.common;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -64,11 +65,13 @@ public class CampaignUpdate {
 			HashMap<String, Object> logsMap = new HashMap<String, Object>();
 			
 			logsMap.put("account_id", String.valueOf(row.getF().get(0).getV()));
-			logsMap.put("operation", "CAMPAIGN_UPDATE");
+			logsMap.put("operation", "UPDATE");
 			logsMap.put("table_name", "CAMPAIGN_UPDATE");
-			logsMap.put("campaign_name", String.valueOf(row.getF().get(1).getV()) + " - " + String.valueOf(row.getF().get(2).getV()));
+			logsMap.put("campaign_id", String.valueOf(row.getF().get(1).getV()));
+			logsMap.put("campaign_name", String.valueOf(row.getF().get(2).getV()));
 			logsMap.put("status_code", response.getStatusLine().getStatusCode());
 			logsMap.put("response_message", buffer.toString());
+			logsMap.put("created_at", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis()));
 			
 			logsRow.setJson(logsMap);
 			App.logChunk.add(logsRow);
