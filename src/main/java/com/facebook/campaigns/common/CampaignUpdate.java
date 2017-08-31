@@ -3,6 +3,7 @@ package com.facebook.campaigns.common;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -13,7 +14,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import com.facebook.campaigns.main.App;
 import com.google.api.services.bigquery.model.TableRow;
+import com.google.api.services.bigquery.model.TableDataInsertAllRequest.Rows;
 
 public class CampaignUpdate {
 
@@ -55,6 +58,20 @@ public class CampaignUpdate {
 			}
 			
 			System.out.println(buffer.toString());
+			
+			Rows logsRow = new Rows();
+			
+			HashMap<String, Object> logsMap = new HashMap<String, Object>();
+			
+			logsMap.put("account_id", String.valueOf(row.getF().get(0).getV()));
+			logsMap.put("operation", "CAMPAIGN_UPDATE");
+			logsMap.put("table_name", "CAMPAIGN_UPDATE");
+			logsMap.put("campaign_name", String.valueOf(row.getF().get(1).getV()) + " - " + String.valueOf(row.getF().get(2).getV()));
+			logsMap.put("status_code", response.getStatusLine().getStatusCode());
+			logsMap.put("response_message", buffer.toString());
+			
+			logsRow.setJson(logsMap);
+			App.logChunk.add(logsRow);
 			
 			if(response.getStatusLine().getStatusCode() >= 200 && response.getStatusLine().getStatusCode() < 300){
 				
