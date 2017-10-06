@@ -1,5 +1,13 @@
 This code update all Campaigns on Facebook for all Clients through BQ Table.
 
+Code Version : 4.0
+
+Difference from Version : 3.0
+
+1. Added two fields Parse_Client_ID and Hostname to the BQ Tables.
+
+
+
 Code Version : 3.0
 
 Difference from Version 2.0

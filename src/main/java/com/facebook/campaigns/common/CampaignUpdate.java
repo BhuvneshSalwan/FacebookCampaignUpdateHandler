@@ -64,6 +64,8 @@ public class CampaignUpdate {
 			
 			HashMap<String, Object> logsMap = new HashMap<String, Object>();
 			
+			logsMap.put("hostname", String.valueOf(row.getF().get(5).getV()));
+			logsMap.put("parse_client_id", String.valueOf(row.getF().get(6).getV()));
 			logsMap.put("account_id", String.valueOf(row.getF().get(0).getV()));
 			logsMap.put("operation", "UPDATE");
 			logsMap.put("table_name", "CAMPAIGN_UPDATE");

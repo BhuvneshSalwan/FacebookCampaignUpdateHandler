@@ -1,4 +1,4 @@
-com\google\bigquery\main\BQOperations.class
-com\facebook\campaigns\main\App.class
-com\facebook\campaigns\common\CampaignUpdate.class
-com\google\bigquery\main\GAuthenticate.class
+com/google/bigquery/main/BQOperations.class
+com/google/bigquery/main/GAuthenticate.class
+com/facebook/campaigns/common/CampaignUpdate.class
+com/facebook/campaigns/main/App.class

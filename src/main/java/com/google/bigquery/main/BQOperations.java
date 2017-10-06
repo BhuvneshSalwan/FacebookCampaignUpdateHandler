@@ -66,7 +66,7 @@ public class BQOperations {
 	
 		try{
 			
-			String querysql = "SELECT account_id,campaign_id,campaign_name,status,fb_campaign_name FROM ["+ PROJECT_ID +":"+ DATASET_ID +"."+ TABLE_ID +"];";
+			String querysql = "SELECT account_id,campaign_id,campaign_name,status,fb_campaign_name,hostname,parse_client_id FROM ["+ PROJECT_ID +":"+ DATASET_ID +"."+ TABLE_ID +"];";
 		
 			JobReference jobId = startQuery(bigquery, PROJECT_ID, querysql);
 		

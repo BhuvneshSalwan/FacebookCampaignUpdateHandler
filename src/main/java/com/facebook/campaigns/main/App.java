@@ -53,6 +53,16 @@ public class App{
 						}
 						
 					}
+					
+					if(null != logChunk && logChunk.size() > 0){
+			    		
+			    		if(BQOperations.insertDataRows(bigquery, logChunk)){
+			    			System.out.println("Response Message : Logs Added Successfully.");
+			    		}else{
+			    			System.out.println("Response Message : Error while saving Logs.");
+			    		}
+			    		
+			    	}
 				
 				}
 				
@@ -79,16 +89,6 @@ public class App{
 			System.exit(0);
 		
 		}
-		
-		if(logChunk.size() > 0){
-    		
-    		if(BQOperations.insertDataRows(bigquery, logChunk)){
-    			System.out.println("Response Message : Logs Added Successfully.");
-    		}else{
-    			System.out.println("Response Message : Error while saving Logs.");
-    		}
-    		
-    	}
 		 
 	}
 	
